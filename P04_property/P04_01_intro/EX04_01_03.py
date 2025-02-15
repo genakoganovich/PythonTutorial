@@ -1,0 +1,24 @@
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def set_age(self, age):
+        if age <= 0:
+            raise ValueError('The age must be positive')
+        self._age = age
+
+    def get_age(self):
+        return self._age
+
+    age = property(fget=get_age, fset=set_age)
+
+
+if __name__ == '__main__':
+    print(Person.age)
+
+    john = Person('John', 18)
+    jack = Person('Jack', 20)
+    
+    print(john.__dict__)
+    print(jack.__dict__)
